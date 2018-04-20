@@ -1,11 +1,14 @@
 package com.dygstudio.microservice.service;
 
+import com.dygstudio.microservice.entity.Entity;
 import com.dygstudio.microservice.entity.Restaurant;
 import com.dygstudio.microservice.repository.RestaurantRepository;
+import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
 import java.util.Collection;
 
+@Service
 public class RestaurantService extends BaseService<Restaurant,BigInteger> {
     private RestaurantRepository<Restaurant,String> restaurantRepository;
     public RestaurantService(RestaurantRepository repository){
@@ -24,5 +27,8 @@ public class RestaurantService extends BaseService<Restaurant,BigInteger> {
     }
     public Collection<Restaurant> findByName(String name){
         return restaurantRepository.getAll();
+    }
+    public Entity findById(String id){
+        return restaurantRepository.get(id);
     }
 }
